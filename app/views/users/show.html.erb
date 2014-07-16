@@ -1,0 +1,33 @@
+<h3>User</h3>
+<p>User: <%= @user.name %></p>
+<p>Email: <%= @user.email if @user.email %></p>
+
+<% if !@follows.blank? %>
+<h3> Follows </h3>
+<p>User: <%= @follows.name %></p>
+<p>Email: <%= @follows.email if @follows.email %></p>
+<%end%>
+
+<% if @invitees.blank? %>
+ <p> There are no followers for this user </p>
+<%else%>
+<ul><h4> Followers of <%= @user.name %></h4>
+<% @invitees.each do |invitee| %>
+<li><p>User: <%= invitee.name %></p></li>
+<li><p>Email: <%= invitee.email if invitee.email %></p> </li>
+
+
+    <% @flws = User.where(email: invitee.sent_invitations.map(&:recipient_email)) %>
+	<% if @flws.blank? %>
+	   <p> There are no followers for this user </p>
+	<%else%>   
+	<ul>  <h4>follwers of <%=invitee.name %> </h4>
+	 <% @flws.each do |fw| %>
+	       <li>  <p>User: <%= fw.name %></p></li>
+           <li> <p>Email: <%= fw.email if fw.email %></p> </li></ul>
+<%end%>
+<%end%>
+</ul>
+<%end%>
+<%end%>
+<p> <%= link_to 'back', users_path %> </p>
