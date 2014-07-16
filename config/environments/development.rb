@@ -35,13 +35,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = { 
-    :address              => "smtp.gmail.com",  
-    :port                 => 25,  
-	:domain               => "gmail.com",
-    :user_name            => "rajmanjula2006@gmail.com",  
-    :password             => "",  
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'gmail.com',
+      user_name: 'rajmanjula2006@gmail.com',
+      password: 'rajlakshmi',
+      authentication: 'plain',
+      enable_starttls_auto: true
   }
 
   # Raises error for missing translations

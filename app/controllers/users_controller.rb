@@ -7,7 +7,8 @@ before_filter :authenticate_user!
 
   def show
     @user = User.find(params[:id])
-	@invitees = @user.sent_invitations.where(accepted: true) #User.where(email: @user.sent_invitations.map(&:recipient_email))
+	@invitees = Invitation.find(:all, :conditions=> ["sender_id =? and accepted = ?", @user.id, true ])
+	#@user.sent_invitations.accepted #User.where(email: @user.sent_invitations.map(&:recipient_email))
 	p "*******************"
 	p @invitees
 	

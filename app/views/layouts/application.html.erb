@@ -41,9 +41,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
 		  <% if user_signed_in? %>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            <li>Hi <%= current_user.name %><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 			<% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %>|<%= link_to "sign in", new_user_session_path %></li>
 		  <%end%>
           </ul>
         </div><!--/.nav-collapse -->
@@ -60,14 +60,6 @@
 <%= yield %>
 </div>
 
- <div class="footer">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
+ 
 </body>
 </html>

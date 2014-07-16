@@ -1,12 +1,12 @@
-<p> hello!</p>
+<p> Enter your friends email address:</p>
 <%= simple_form_for @invitation do |f| %>
  <%= f.error_notification %>
   <p>
    <div class="form-inputs">
-    <%= f.text_field :recipient_email %>
+    <%= f.text_field :recipient_email, :size=>50 %>
   </div>
     <div class="form-actions">
-    <%= f.button :submit, "Invite" %>
+    <br/><%= f.button :submit, "Invite" %>
   </div>
 <% end %>
 
