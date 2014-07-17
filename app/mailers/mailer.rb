@@ -6,12 +6,17 @@ class Mailer < ActionMailer::Base
   #
   #   en.mailer.invitation.subject
   #
-def invite_friend(invitation, signup_url)
+def invite_friend(invitation,user, signup_url)
    @invitation = invitation
+   @url = signup_url
+   @user = user.name
    mail(:to => invitation.recipient_email,
-         :subject => "Welcome to My Awesome Site",
-		 :body => signup_url)
-  invitation.update_attribute(:sent_at, Time.now)
+        :from => user.email,
+         :subject => "Please join me") do |format|
+		 format.text
+		end
+		# :body => signup_url)
+    invitation.update_attribute(:sent_at, Time.now)
 end
 
 

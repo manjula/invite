@@ -1,9 +1,16 @@
 <p> Enter your friends email address:</p>
 <%= simple_form_for @invitation do |f| %>
  <%= f.error_notification %>
+ <% if @invitation.errors.any? %>
+    <ul class="errors">
+      <% @invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <p>
    <div class="form-inputs">
-    <%= f.text_field :recipient_email, :size=>50 %>
+    <%= f.text_field :recipient_email, :size=>50, :required => true %>
   </div>
     <div class="form-actions">
     <br/><%= f.button :submit, "Invite" %>

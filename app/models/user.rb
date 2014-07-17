@@ -6,12 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 		 
 
-#validates_uniqueness_of :invitation_id
+validates_uniqueness_of :invitation_id
 
 has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
 belongs_to :invitation
 
-#scope :accepted, where(accepted: true)
 
 def invitation_token
   invitation.token if invitation

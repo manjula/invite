@@ -21,7 +21,7 @@
 	<% if @flws.blank? %>
 	   <p> There are no followers for this user </p>
 	<%else%>   
-	<ul>  <h4>follwers of <%=invitee.name %> </h4>
+	<ul>  <h4>Follwers of <%=invitee.name %> </h4>
 	 <% @flws.each do |fw| %>
 	       <li>  <p>User: <%= fw.name %></p></li>
            <li> <p>Email: <%= fw.email if fw.email %></p> </li></ul>

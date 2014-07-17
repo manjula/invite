@@ -27,9 +27,10 @@ class InvitationsController < ApplicationController
   def create
   @invitation = Invitation.new(invitation_params)
      @invitation.sender = current_user
+	 path = request.host_with_port
   if @invitation.save
     if user_signed_in?
-      Mailer.invite_friend(@invitation, new_user_registration_path(:invitation_token => @invitation.token)).deliver
+      Mailer.invite_friend(@invitation,current_user, path+new_user_registration_path(:invitation_token => @invitation.token)).deliver
       flash[:notice] = "Thank you, invitation sent."
       redirect_to users_url
     else

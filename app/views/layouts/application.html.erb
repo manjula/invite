@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DemoApp</title>
+  <title>Assignment</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -35,15 +35,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
+            <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Invite", invitations_path %></li>
+            <li><%= link_to "Invite a Friend", invitations_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
 		  <% if user_signed_in? %>
             <li>Hi <%= current_user.name %><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 			<% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %>|<%= link_to "sign in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li><li><%= link_to "sign in", new_user_session_path %></li>
 		  <%end%>
           </ul>
         </div><!--/.nav-collapse -->
